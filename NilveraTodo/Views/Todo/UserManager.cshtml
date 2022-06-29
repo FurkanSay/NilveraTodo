@@ -1,0 +1,102 @@
+﻿@model IEnumerable<NilveraTodo.Models.Kullanici>
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">User Manager</h4>
+                   
+
+                    @using (Html.BeginForm("KullaniciYonet", "Todo", FormMethod.Post, new { @class = "forms-sample" }))
+                    {
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Id</label>
+                            <input type="text" class="form-control" name="Id" id="Id"
+                                                   placeholder="Id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Adı Soyad</label>
+                             <input type="text"class="form-control" name="AdSoyad" id="AdSoyad"
+                                                   placeholder="Adı Soyad" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Telefon</label>
+                            <input type="text"class="form-control" name="telefon" id="telefon"
+                                                   placeholder="Telefon" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputConfirmPassword1">Firma Ismi</label>
+                             <input type="text"class="form-control" name="firmaismi" id="firmaismi"
+                                                   placeholder="Firma Ismi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputConfirmPassword1">Adres</label>
+                             <input type="text"class="form-control" name="adres" id="adres"
+                                                   placeholder="Adres" required>
+                        </div>
+                        
+                        
+                        
+                         <button name="btnIslem" type="submit"  value="guncelle" class="btn btn-primary me-1 mb-1">Guncelle/Ekle</button>
+                                            <button name="btnIslem" type="submit" value="sil"
+                                                    class="btn btn-light-secondary me-1 mb-1">
+                                                Sil
+                                            </button>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">User List</h4>
+
+                    <div class="table-responsive pt-3">
+                        <table id="mtable" class="table table-hover ttable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Tarih
+                                    </th>
+                                    <th>
+                                        Ad Soyad
+                                    </th>
+                                    <th>
+                                        Telefon
+                                    </th>
+                                    <th>
+                                        Firma Ismi
+                                    </th>
+                                    <th>
+                                        Adres
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var x = 0;
+                                }
+                                @foreach (var item in Model)
+                                {
+                                    <tr id="@item.Id" class="select">
+                                        
+                                        <td>@item.Id.ToString().Trim()</td>
+                                        <td>@item.Tarih.ToString().Trim()</td>
+                                        <td>@item.AdSoyad.ToString().Trim()</td>
+                                        <td>@item.Telefon</td>
+                                        <td>@item.FirmaIsmi.ToString().Trim()</td>
+                                        <td>@item.Adres.ToString().Trim()</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
